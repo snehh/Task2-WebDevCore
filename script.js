@@ -2,6 +2,18 @@ var qarray = quesArray
 var index = 0, correct = 0
 var answered = []
 
+const startPage = () => {
+    document.getElementById('container').innerHTML = 
+        `<div class="main startpage">
+            <h1>Think you know all the facts about the novel coronavirus?</h1>
+            <h3>Take this quiz to find out</h3>
+            <button id="start">Start</button>
+        </div>`
+    document.getElementById('start').addEventListener('click', () => {
+        ansDiv(index)
+    })
+}
+
 
 const buttonListeners = () => {
     document.getElementById('Next').addEventListener('click', () => {
@@ -20,7 +32,6 @@ const buttonListeners = () => {
 }
 
 const quizcomplete = () => {
-    
     document.getElementById('container').innerHTML = 
         `<div class="main results">
         <h1>Results</h1>
@@ -110,5 +121,5 @@ const ansDiv = (index) => {
     ansListeners()
 }
 
-ansDiv(index)
+startPage()
 

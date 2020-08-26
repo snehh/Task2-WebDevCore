@@ -28,6 +28,11 @@ body{
     font-size: 18px;
     color: #685369;
 }
+.main.startpage{
+    min-height: auto;
+    padding: 50px 40px;
+    text-align: center;
+}
 .question{
     font-size: larger;
 }
@@ -76,13 +81,13 @@ button{
     outline: none;
     cursor: pointer;
 }
-.results button{
+.results button, .startpage button{
     background-color: #72d14d;
     color: #e8e7f7;
     padding: 15px;
     font-style: italic;
 }
-.results button:hover{
+.results button:hover, .startpage button:hover{
     background-color: #68c046;
 }
 .nav button{
