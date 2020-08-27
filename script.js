@@ -1,6 +1,7 @@
 var qarray = shuffleArray(quesArray)
-var index = 0, correct = 0, username='Guest'
+var index = 0, correct = 0, username='Guest', currentTime = 120
 var answered = []
+var setTime
 
 const createNavBar = (index) => {
     let txt = 
@@ -18,6 +19,16 @@ const createNavBar = (index) => {
     return txt
 }
 
+const scoreCalc = (correct, time) => {
+    //minimum time for full score is 50s after which points are deducted
+
+    if(time >=70 ) return correct
+    else{
+        let score = (20*(time/50) + 80*(correct/10))/10
+        return score
+    }
+}
+
 const startPage = () => {
     document.getElementById('container').innerHTML = 
         `<div class="main startpage">
@@ -28,6 +39,18 @@ const startPage = () => {
     document.getElementById('start').addEventListener('click', () => {
         let val = document.getElementById('name').value
         if(val != '') username = val
+        setTime = setInterval(function(){
+            let disp
+            if(currentTime == 120) disp = '2mins'
+            else if(currentTime > 60) disp = `1min ${currentTime-60}s`
+            else if(currentTime == 60) disp = '1 min'
+            else if(currentTime < 60) disp = `${currentTime}s`
+            document.getElementById('timer').innerHTML = `Time left: ${disp}`
+            currentTime--;
+            if(currentTime === 0 ){
+                quizcomplete()
+            }
+        }, 1000)
         ansDiv(index)
     })
 }
@@ -54,12 +77,28 @@ const buttonListeners = () => {
 }
 
 const quizcomplete = () => {
+    clearInterval(setTime)
+    var score = scoreCalc(correct, currentTime)
+
+    var date = new Date()
+    date = date.toLocaleDateString()
+
+    if(localStorage.getItem('covidquiz-score') == null || localStorage.getItem('covidquiz-score')<score){
+        localStorage.setItem('covidquiz-score', score)
+        localStorage.setItem('covidquiz-name', username)
+        localStorage.setItem('covidquiz-date', date)
+    }
+
+    console.log(localStorage.getItem('covidquiz-score'))
+
+    document.getElementById('timer').innerHTML = ``
     document.getElementById('container').innerHTML = 
         `<div class="main results">
         <h1>Results</h1>
         <h3>Congradulations ${username}!</h3>
         <span>
-            Your Score: ${correct} <br>
+            Your Score: <b>${score}</b> <br>
+            High score is <b>${localStorage.getItem('covidquiz-score')}</b> by ${localStorage.getItem('covidquiz-name')} on ${localStorage.getItem('covidquiz-date')} <br>
         </span>
         <button onclick="window.location.reload();">Replay</button>
     </div>`

@@ -1,12 +1,20 @@
 body{
     background-color: #685369;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    margin-top: 150px;
 }
 .container{
     text-align: center;
     margin: 0 10%;
-    margin-top: 150px;
-    
+}
+.timer{
+    margin: 0 10%;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    min-height: 21.6px;
+    color: #DDDBF1;
+    font-style: italic;
 }
 .main{
     background-color: #DDDBF1;
