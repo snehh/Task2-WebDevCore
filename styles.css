@@ -5,11 +5,11 @@ body{
 .container{
     text-align: center;
     margin: 0 10%;
+    margin-top: 150px;
     
 }
 .main{
     background-color: #DDDBF1;
-    margin-top: 180px;
     padding: 20px;
     padding-left: 40px;
     border-radius: 20px;
@@ -108,4 +108,42 @@ button{
     cursor: default;
     background-color: #af9fb9;
     color: black;
+}
+input[type="text"]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #00000098;
+    outline: none;
+    margin-left: 10px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar{
+    min-height: 40px;
+    background-color: #DDDBF1;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px 4.5%;
+}
+.navspan{
+    min-width: 8%;
+    display: inline-block;
+    margin-right: 1%;
+    background-color: #68636817;
+    min-height: 20px;
+    padding: 10px 0px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.navspan:first-child{
+    margin-left: 1%;
+}
+.navspan.correct{
+    background-color: #65ad48a6;
+}
+.navspan.wrong{
+    background-color: #af43437a;
+}
+.navspan.current{
+    background-color: #826e83a6;
 }
