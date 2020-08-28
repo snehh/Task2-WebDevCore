@@ -25,7 +25,7 @@ const scoreCalc = (correct, time) => {
     if(time >=70 ) return correct
     else{
         let score = (20*(time/50) + 80*(correct/10))/10
-        return score
+        return score.toFixed(2)
     }
 }
 
